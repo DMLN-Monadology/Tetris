@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import TetrisReducer from './politburo';
+import TetrisReducer from './grid_reducer';
 
 const RootReducer = combineReducers({
   game: TetrisReducer

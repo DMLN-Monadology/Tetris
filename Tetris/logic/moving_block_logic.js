@@ -48,22 +48,4 @@ function rotate(string_coordinates) {
   return rotated_coordinates.map(stringify_pair);
 }
 
-
-b = rotate( ["1204", "1205", "1305", "1306"])
-
-// function rotate(block_coordinates) {
-//   let origin = block_coordinates[0];
-//   let outer_coordinates = block_coordinates.splice(1,3);
-//   let rotated_coordinates = []
-//
-//   outer_coordinates.map(coordinate => {
-//     let x = parseInt(coordinate.slice(0,2));
-//     let y = parseInt(coordinate.slice(2,4));
-//     rotated_x = -1*y;
-//     rotated_y = x;
-//     rotated_coordinate = stringify(rotated_x) + stringify(rotated_y);
-//     rotated_coordinates.push(rotated_coordinate);
-//   })
-//
-//   return origin.concat(rotated_coordinates);
-// }
+export default rotate;

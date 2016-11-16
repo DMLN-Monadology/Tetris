@@ -1,10 +1,10 @@
 import { createStore } from 'redux';
-import RootReducer from '../reducers/root_reducer';
+import GridReducer from '../reducers/root_reducer';
 
 
 const configureStore = (preloadedState = {} ) => (
   createStore(
-    RootReducer,
+    GridReducer,
     preloadedState,
   )
 );

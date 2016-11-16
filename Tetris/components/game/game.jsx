@@ -6,6 +6,7 @@ class Game extends React.Component {
     super(props)
   }
 
+
   render() {
     return (
       <div>
@@ -13,6 +14,9 @@ class Game extends React.Component {
         <div>
           <Grid current_block={this.props.game.current_block} blocks={this.props.game.blocks}/>
         </div>
+        <button onClick={this.props.rotateBlock}>
+          Rotate
+        </button>
       </div>
     )
   }
