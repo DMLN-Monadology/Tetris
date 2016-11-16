@@ -1,0 +1,22 @@
+.Grid {
+  border: 0.1px solid red;
+  margin: 0px;
+  margin-left: 30px;
+  padding: 0px;
+  height: 100%;
+  width: 370px;
+}
+
+.Row {
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  flex-direction: row;
+}
+
+.Column {
+  border: 0.1px solid blue;
+  width: 35px;
+  height: 35px;
+  font-size: 12px;
+}
