@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const preloadedState = {
     game: {
       blocks: [],
-      current_block: ["1204", "1205", "1305", "1306"]
+      current_block: ["1205","1204", "1305", "1306"]
     }
   };
 
