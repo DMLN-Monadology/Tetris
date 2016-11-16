@@ -33,7 +33,7 @@ export const is_within_boundary = (coordinates) => {
   let y_min = Math.min.apply(Math, y_coordinates);
   let y_max = Math.max.apply(Math, y_coordinates);
 
-  return (x_min > 0 && x_max < 11 && y_min > 0 && y_max < 16)
+  return (x_min > 0 && x_max < 11 && y_min > 0 && y_max < 20)
 };
 
 
@@ -42,9 +42,20 @@ export const is_within_boundary = (coordinates) => {
 //used in reducer, since that is how we get the blocks array
 //if true, then let them go. if not, stop!
 
-export const hits_a_block = (coordinates, blocks) => {
+export const hits_a_block = (string_coordinates, blocks) => {
+  let coordinates = string_coordinates.map(numberize)
+
+  let blocks_below = [];
+
+  coordinates.map( coordinate => {
+    blocks_below.push([coordinate[0]-1, coordinate[1]])
+  });
+
+  blocks_below = blocks_below.map(stringify_pair);
+
   let struck = false;
-  coordinates.every(coordinate => {
+
+  blocks_below.every(coordinate => {
     if (blocks.includes(coordinate)) {
       struck = true;
     };

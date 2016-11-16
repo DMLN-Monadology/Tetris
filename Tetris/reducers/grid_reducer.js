@@ -1,4 +1,12 @@
 import merge from 'lodash/merge';
+import {LINE_PIECE,
+        SQUARE,
+        T_BLOCK,
+        SQUIGGLY,
+        REVERSE_SQUIGGLY,
+        L_BLOCK,
+        REVERSE_L_BLOCK
+} from './blocks';
 
 import {CREATE_NEW_BLOCK,
         ROTATE_BLOCK,
@@ -13,6 +21,15 @@ import {moveBlockLeft,
         moveBlockDown
 } from '../logic/moving_block_logic';
 
+const blocks = [
+        LINE_PIECE,
+        SQUARE,
+        T_BLOCK,
+        SQUIGGLY,
+        REVERSE_SQUIGGLY,
+        L_BLOCK,
+        REVERSE_L_BLOCK]
+
 const defaultState = Object.freeze({
   blocks: [],
   current_block: []
@@ -24,9 +41,9 @@ const GridReducer = (oldState = defaultState, action) => {
   newState.current_block = [];
   let current_block_coordinates = oldState.current_block;
   switch(action.type) {
-    case CREATE_NEW_BLOCK:
-      newState.current_block.concat(action.block)
-      return newState;
+    // case CREATE_NEW_BLOCK:
+    //   newState.current_block.concat(action.block)
+    //   return newState;
     case ROTATE_BLOCK:
       newState.current_block = rotate(current_block_coordinates);
       return newState;
@@ -41,6 +58,10 @@ const GridReducer = (oldState = defaultState, action) => {
       return newState;
     case RECORD_FALLEN_BLOCK:
       let fallen_block = oldState.current_block;
+      // let randomBlockNum = Math.floor(Math.random()*(7))
+      // let newBlock = blocks[randomBlockNum]
+      // newState.current_block = newBlock;
+      newState.current_block = ["0604","0605","0606","0706"];
       newState.blocks = oldState.blocks.concat(fallen_block);
       return newState;
     default:

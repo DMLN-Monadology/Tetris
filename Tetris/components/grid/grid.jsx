@@ -6,7 +6,7 @@ class Grid extends React.Component {
     super(props)
 
     this.rows = [];
-    for ( let i = 17; i > 0; i--) {
+    for ( let i = 19; i > 0; i--) {
       this.rows.push(i)
     };
   }

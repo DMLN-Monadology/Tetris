@@ -20,3 +20,19 @@ let bad_coordinates = ["0202","0303","0304","0404"];
 let good_coordinates = ["0402","0403","0404","0405"];
 check_against_blocks(bad_coordinates, blocks);
 check_against_blocks(good_coordinates, blocks);
+
+
+export const hits_a_block = (coordinates, blocks) => {
+  let struck = false;
+  coordinates.every(coordinate => {
+    if (blocks.includes(coordinate)) {
+      struck = true;
+    };
+  })
+
+  return struck;
+}
+
+
+a = ["0304","0305","0204","0205"]
+b = ["0404","0405","0406","0506"]
