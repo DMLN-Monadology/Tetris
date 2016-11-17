@@ -63,3 +63,15 @@ export const hits_a_block = (string_coordinates, blocks) => {
 
   return struck;
 }
+
+export const move_all_blocks_down = (blocks) => {
+  let coordinates = blocks.map(numberize)
+
+  let shifted_blocks = []
+
+  coordinates.map ( coordinate => {
+    shifted_blocks.push([coordinate[0] - 1, coordinate[1]])
+  })
+
+  return shifted_blocks.map(stringify_pair)
+}

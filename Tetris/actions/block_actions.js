@@ -34,3 +34,10 @@ export const RECORD_FALLEN_BLOCK = "RECORD_FALLEN_BLOCK";
 export const recordFallenBlock = () => ({
   type: RECORD_FALLEN_BLOCK
 });
+
+export const REMOVE_ROW = "REMOVE_ROW";
+
+export const removeRow = (row_num) => ({
+  type: REMOVE_ROW,
+  row_num
+})

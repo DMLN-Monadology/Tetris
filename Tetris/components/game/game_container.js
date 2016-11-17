@@ -4,7 +4,8 @@ import {rotateBlock,
         shiftBlockLeft,
         shiftBlockRight,
         shiftBlockDown,
-        recordFallenBlock
+        recordFallenBlock,
+        removeRow
 } from '../../actions/block_actions';
 
 const mapStateToProps = (state) => ({
@@ -16,7 +17,8 @@ const mapDispatchToProps = dispatch => ({
   shiftBlockLeft: () => dispatch(shiftBlockLeft()),
   shiftBlockRight: () => dispatch(shiftBlockRight()),
   shiftBlockDown: () => dispatch(shiftBlockDown()),
-  recordFallenBlock: () => dispatch(recordFallenBlock())
+  recordFallenBlock: () => dispatch(recordFallenBlock()),
+  removeRow: (row_num) => dispatch(removeRow(row_num))
 });
 
 

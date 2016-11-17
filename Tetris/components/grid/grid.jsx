@@ -21,7 +21,9 @@ class Grid extends React.Component {
               key={row_num}
               row_num={row_num}
               blocks={this.props.blocks}
-              current_block={this.props.current_block}/>
+              current_block={this.props.current_block}
+              removeRow={this.props.removeRow}
+              />
           ))
         }
         </ol>

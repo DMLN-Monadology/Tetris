@@ -32,7 +32,10 @@ class Game extends React.Component {
       <div>
         <h1>Tetris Game Component!</h1>
         <div>
-          <Grid current_block={this.props.game.current_block} blocks={this.props.game.blocks}/>
+          <Grid current_block={this.props.game.current_block}
+                blocks={this.props.game.blocks}
+                removeRow={this.props.removeRow}
+          />
         </div>
         <button onClick={this.props.rotateBlock}>
           Rotate
