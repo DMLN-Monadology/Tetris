@@ -64,22 +64,23 @@ const GridReducer = (oldState = defaultState, action) => {
       return newState;
     case RECORD_FALLEN_BLOCK:
       let fallen_block = oldState.current_block;
-      // let randomBlockNum = Math.floor(Math.random()*(7))
-      // let newBlock = blocks[randomBlockNum]
-      // newState.current_block = newBlock;
-      newState.current_block = ["1404","1304","1204","1104"]
+      let randomBlockNum = Math.floor(Math.random()*(7))
+      let newBlock = blocks[randomBlockNum]
+      newState.current_block = newBlock;
+      // newState.current_block = ["1404","1304","1204","1104"]
       newState.blocks = oldState.blocks.concat(fallen_block);
       return newState;
     case REMOVE_ROW:
       let new_blocks = [];
-      oldState.blocks.map(coordinate => {
+      oldState.blocks.forEach(coordinate => {
         if (coordinate.slice(0,2) !== action.row_num) {
           new_blocks.push(coordinate)
         };
       })
-      let shifted_blocks = move_all_blocks_down(new_blocks)
+      let shifted_blocks = move_all_blocks_down(new_blocks, action.row_num)
       newState.blocks = shifted_blocks;
       newState.current_block = oldState.current_block;
+      newState.score = oldState.score + 1000
       return newState;
     default:
       return oldState;

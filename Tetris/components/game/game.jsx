@@ -1,10 +1,17 @@
 import React from 'react';
+import $ from 'jquery';
 import Grid from '../grid/grid';
 import  {numberize, hits_a_block} from '../../logic/block_utilities_logic';
 
 class Game extends React.Component {
   constructor(props){
     super(props)
+    this.nachat = this.nachat.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  componentDidMount() {
+    $(document).on('keydown', event => this.handleKeyDown(event));
   }
 
   componentWillReceiveProps(newProps) {
@@ -26,11 +33,33 @@ class Game extends React.Component {
     }
   };
 
+  nachat() {
+    window.setInterval( () => {
+      this.props.shiftBlockDown();
+    }, 500);
+  }
+
+  handleKeyDown(event){
+    event.preventDefault();
+    switch(event.keyCode) {
+      case 37:
+        return this.props.shiftBlockLeft();
+      case 38:
+        return this.props.rotateBlock();
+      case 39:
+        return this.props.shiftBlockRight();
+      case 40:
+        return this.props.shiftBlockDown();
+    }
+  }
+
 
   render() {
+
     return (
       <div>
         <h1>Tetris Game Component!</h1>
+        <h2>{this.props.game.score}</h2>
         <div>
           <Grid current_block={this.props.game.current_block}
                 blocks={this.props.game.blocks}
@@ -48,6 +77,9 @@ class Game extends React.Component {
         </button>
         <button onClick={this.props.shiftBlockDown}>
           Down
+        </button>
+        <button onClick={this.nachat}>
+          begin
         </button>
       </div>
     )

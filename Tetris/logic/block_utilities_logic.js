@@ -64,14 +64,19 @@ export const hits_a_block = (string_coordinates, blocks) => {
   return struck;
 }
 
-export const move_all_blocks_down = (blocks) => {
-  let coordinates = blocks.map(numberize)
+export const move_all_blocks_down = (blocks, row_num) => {
+  let coordinates = blocks.map(numberize);
 
-  let shifted_blocks = []
+  let deleted_row = parseInt(row_num);
+
+  let shifted_blocks = [];
 
   coordinates.map ( coordinate => {
-    shifted_blocks.push([coordinate[0] - 1, coordinate[1]])
+    if (coordinate[0] > deleted_row) {
+      shifted_blocks.push([coordinate[0] - 1, coordinate[1]])
+    } else {
+      shifted_blocks.push(coordinate)
+    };
   })
-
-  return shifted_blocks.map(stringify_pair)
-}
+  return shifted_blocks.map(stringify_pair);
+};
