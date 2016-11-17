@@ -25,7 +25,7 @@ import {moveBlockLeft,
         moveBlockDown
 } from '../logic/moving_block_logic';
 
-import {move_all_blocks_down} from '../logic/block_utilities_logic';
+import {move_all_blocks_down, struck_ceiling} from '../logic/block_utilities_logic';
 
 const blocks = [
         LINE_PIECE,
@@ -66,9 +66,15 @@ const GridReducer = (oldState = defaultState, action) => {
       let fallen_block = oldState.current_block;
       let randomBlockNum = Math.floor(Math.random()*(7))
       let newBlock = blocks[randomBlockNum]
-      newState.current_block = newBlock;
       // newState.current_block = ["1404","1304","1204","1104"]
-      newState.blocks = oldState.blocks.concat(fallen_block);
+      let all_fallen_blocks = oldState.blocks.concat(fallen_block);
+      if (struck_ceiling(all_fallen_blocks)) {
+        newState.blocks = [];
+        newState.current_block = [];
+      } else {
+        newState.blocks = all_fallen_blocks;
+        newState.current_block = newBlock;
+      }
       return newState;
     case REMOVE_ROW:
       let new_blocks = [];

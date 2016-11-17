@@ -58,12 +58,13 @@ class Game extends React.Component {
 
     return (
       <div>
-        <h1>Tetris Game Component!</h1>
+        <h1>Tetris on React/Redux!</h1>
         <h2>{this.props.game.score}</h2>
         <div>
           <Grid current_block={this.props.game.current_block}
                 blocks={this.props.game.blocks}
                 removeRow={this.props.removeRow}
+                className="Grid"
           />
         </div>
         <button onClick={this.props.rotateBlock}>

@@ -14,7 +14,8 @@ class Grid extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="GridWrapper">
+        <img className="logo" src={"http://res.cloudinary.com/dmuuruew8/image/upload/v1479425070/Screen_Shot_2016-11-17_at_3.23.08_PM_gwgzcu.png"}/>
         <ol className="Grid">
           {this.rows.map( row_num => (
             <Row

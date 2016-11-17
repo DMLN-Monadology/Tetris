@@ -1,10 +1,24 @@
 .Grid {
-  border: 0.1px solid red;
+  border: 10px solid #FF4112;
   margin: 0px;
-  margin-left: 30px;
   padding: 0px;
   height: 100%;
-  width: 370px;
+  width: 320px;
+  background: url(http://res.cloudinary.com/dmuuruew8/image/upload/c_scale,h_610,w_320/v1479417679/St-Basil-s-Cathedral-and-Spassky-Tower-Red-Square_1600x1200_b3ob9s.jpg) no-repeat;
+  background-position: 0px 125px;
+}
+
+.GridWrapper {
+  position: relative;
+  margin-left: 30px;
+}
+
+.logo {
+  position: absolute;
+  width: 320px;
+  height: 130px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .Row {
@@ -15,13 +29,13 @@
 }
 
 .Column {
-  border: 0.1px solid blue;
-  width: 35px;
-  height: 35px;
+  border: 0.1px dotted blue;
+  width: 30px;
+  height: 30px;
   font-size: 12px;
 }
 
 .Block {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }

@@ -80,3 +80,14 @@ export const move_all_blocks_down = (blocks, row_num) => {
   })
   return shifted_blocks.map(stringify_pair);
 };
+
+export const struck_ceiling = (blocks) => {
+  let struck = false;
+  blocks.forEach(coordinate => {
+    if (coordinate.slice(0,2) === "15") {
+      struck = true;
+    };
+  })
+
+  return struck 
+}
