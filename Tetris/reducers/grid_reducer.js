@@ -58,10 +58,10 @@ const GridReducer = (oldState = defaultState, action) => {
       return newState;
     case RECORD_FALLEN_BLOCK:
       let fallen_block = oldState.current_block;
-      // let randomBlockNum = Math.floor(Math.random()*(7))
-      // let newBlock = blocks[randomBlockNum]
-      // newState.current_block = newBlock;
-      newState.current_block = ["0604","0605","0606","0706"];
+      let randomBlockNum = Math.floor(Math.random()*(7))
+      let newBlock = blocks[randomBlockNum]
+      newState.current_block = newBlock;
+      // newState.current_block = ["0604","0605","0606","0706"];
       newState.blocks = oldState.blocks.concat(fallen_block);
       return newState;
     default:

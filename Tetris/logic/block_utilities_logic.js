@@ -55,7 +55,7 @@ export const hits_a_block = (string_coordinates, blocks) => {
 
   let struck = false;
 
-  blocks_below.every(coordinate => {
+  blocks_below.forEach(coordinate => {
     if (blocks.includes(coordinate)) {
       struck = true;
     };
