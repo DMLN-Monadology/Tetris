@@ -5,7 +5,7 @@ module.exports = {
   context: __dirname,
   entry: "./Tetris/Tetris.jsx",
   output: {
-    filename: "./bundle.js"
+    filename: "./Tetris/logic/bundle.js"
   },
   module: {
     loaders: [
