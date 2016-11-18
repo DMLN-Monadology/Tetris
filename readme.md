@@ -14,22 +14,14 @@ The player will be able to:
 - [ ] Manipulate falling blocks by rotating and changing the trajectory of their falls.
 - [ ] make unbroken rows using the geometric blocks by deploying them in place.   
 - [ ] See blocks of unbroken rows disappear and upper blocks fall.
-- [ ] See a timer that will be their score.
+- [ ] Accumulate scores by making unbroken rows
 - [ ] Trigger a game over event by allowing blocks to over-populate the shaft and reach the ceiling.
-
-## Wireframes
-
-* [View Wireframe][view]
-
-[view]: ./docs
 
 ## Architecture and Technologies
 
 - Vanilla Javascript
 - React
 - Redux
-- Easeljs 
-- HTML5 Canvas
 
 ## Implementation Timeline
 
@@ -43,6 +35,8 @@ The player will be able to:
 
 **Day 5**: Backup day
 
-## Bonus Feature
+## Implementation Details
 
-- [ ] Allow users to see a shade of a block that represents where the block will end up should it be allowed to continue on its current trajectory.
+Since all blocks are just rendered coordinates, rotation was handled using linear algebra (a rotational matrix). Each geometric shape has an anchor block, about which other blocks rotate. This anchor block is used as the origin, and the other blocks are first translated to cartesian coordinates relative to the anchor, processed through the rotational matrix, and re-converted back to its absolute coordinate in the grid.
+
+Coordinates are stored as strings where the first 2 strings represent the Column and the latter 2 represents row. This allows for quicker processing by allowing for the index of all blocks to be stored as a one-dimensional array instead of two. 

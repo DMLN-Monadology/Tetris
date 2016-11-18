@@ -48,7 +48,7 @@ class Game extends React.Component {
   nachat() {
     window.setInterval( () => {
       this.props.shiftBlockDown();
-    }, 500);
+    }, 750);
   };
 
   handleKeyDown(event){
