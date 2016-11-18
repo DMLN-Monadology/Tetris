@@ -1,11 +1,23 @@
+.Body {
+  background: url(http://res.cloudinary.com/dmuuruew8/image/upload/v1479433788/St-Basil-s-Cathedral-and-Spassky-Tower-Red-Square_1600x1200_v2rlr2.jpg) no-repeat center center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
 .Grid {
-  border: 10px solid #FF4112;
+  border: 10px solid #9B9EC7;
   margin: 0px;
   padding: 0px;
   height: 100%;
   width: 320px;
-  background: url(http://res.cloudinary.com/dmuuruew8/image/upload/c_scale,h_610,w_320/v1479417679/St-Basil-s-Cathedral-and-Spassky-Tower-Red-Square_1600x1200_b3ob9s.jpg) no-repeat;
-  background-position: 0px 125px;
+  border-radius: 10px;
 }
 
 .GridWrapper {
@@ -19,6 +31,8 @@
   height: 130px;
   margin-left: 10px;
   margin-top: 10px;
+  outline: none;
+  border: none;
 }
 
 .Row {
@@ -33,6 +47,7 @@
   width: 30px;
   height: 30px;
   font-size: 12px;
+  background: #EAEEEC;
 }
 
 .Block {

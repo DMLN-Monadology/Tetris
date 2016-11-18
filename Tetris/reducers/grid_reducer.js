@@ -70,10 +70,12 @@ const GridReducer = (oldState = defaultState, action) => {
       let all_fallen_blocks = oldState.blocks.concat(fallen_block);
       if (struck_ceiling(all_fallen_blocks)) {
         newState.blocks = [];
-        newState.current_block = [];
+        newState.current_block = newBlock;
+        newState.lost = true;
       } else {
         newState.blocks = all_fallen_blocks;
         newState.current_block = newBlock;
+        newState.lost = false;
       }
       return newState;
     case REMOVE_ROW:

@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import Modal from 'react-modal';
 import Grid from '../grid/grid';
 import  {numberize, hits_a_block} from '../../logic/block_utilities_logic';
 
@@ -8,6 +9,11 @@ class Game extends React.Component {
     super(props)
     this.nachat = this.nachat.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.state = { startModalOpen: true,
+                   endModalOpen: this.props.game.lost
+                   };
+    this.onStartModalClose = this.onStartModalClose.bind(this);
+    // this.onEndModalClose = this.onEndModalClose.bind(this);
   }
 
   componentDidMount() {
@@ -15,6 +21,12 @@ class Game extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    // console.log(newProps.game.blocks.length);
+    this.setState({ startModalOpen: false,
+                    endModalOpen: newProps.game.lost
+                  });
+
+
     let current_block_coordinates = newProps.game.current_block.map(numberize)
 
     let struck_bottom = false
@@ -37,7 +49,7 @@ class Game extends React.Component {
     window.setInterval( () => {
       this.props.shiftBlockDown();
     }, 500);
-  }
+  };
 
   handleKeyDown(event){
     event.preventDefault();
@@ -53,11 +65,21 @@ class Game extends React.Component {
     }
   }
 
+  onStartModalClose() {
+    this.setState({startModalOpen: false,
+                   endModalOpen: false});
+    this.nachat();
+  };
+
+  // onEndModalClose() {
+    // window.clearInterval(polkovodets);
+  // }
+
 
   render() {
 
     return (
-      <div>
+      <div className="Body">
         <h1>Tetris on React/Redux!</h1>
         <h2>{this.props.game.score}</h2>
         <div>
@@ -67,24 +89,53 @@ class Game extends React.Component {
                 className="Grid"
           />
         </div>
-        <button onClick={this.props.rotateBlock}>
-          Rotate
-        </button>
-        <button onClick={this.props.shiftBlockLeft}>
-          Left
-        </button>
-        <button onClick={this.props.shiftBlockRight}>
-          Right
-        </button>
-        <button onClick={this.props.shiftBlockDown}>
-          Down
-        </button>
         <button onClick={this.nachat}>
           begin
         </button>
+
+        <Modal
+          isOpen={this.state.startModalOpen}
+          onRequestClose={this.onStartModalClose}
+        >
+          Polkovodets Rumyantsev Start
+          <button onClick={this.onStartModalClose}>Close</button>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.endModalOpen}
+        >
+          Polkovodets Rumyantsev End
+        </Modal>
+
       </div>
     )
   }
 }
 
 export default Game;
+
+// <button onClick={this.props.rotateBlock}>
+//   Rotate
+// </button>
+// <button onClick={this.props.shiftBlockLeft}>
+//   Left
+// </button>
+// <button onClick={this.props.shiftBlockRight}>
+//   Right
+// </button>
+// <button onClick={this.props.shiftBlockDown}>
+//   Down
+// </button>
+
+// isOpen={}
+// onAfterOpen={}
+// onRequestClose={}
+// style={}
+
+
+
+
+// onRequestClose={this.onEndModalClose}
+
+
+// <button onClick={this.onEndModalClose}>Close</button>
