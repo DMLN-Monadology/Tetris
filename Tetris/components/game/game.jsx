@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Modal from 'react-modal';
 import Grid from '../grid/grid';
+import {modalCSS} from './modalCSS';
 import  {numberize, hits_a_block} from '../../logic/block_utilities_logic';
 
 class Game extends React.Component {
@@ -13,7 +14,7 @@ class Game extends React.Component {
                    endModalOpen: this.props.game.lost
                    };
     this.onStartModalClose = this.onStartModalClose.bind(this);
-    // this.onEndModalClose = this.onEndModalClose.bind(this);
+    this.onEndModalClose = this.onEndModalClose.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +22,6 @@ class Game extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // console.log(newProps.game.blocks.length);
     this.setState({ startModalOpen: false,
                     endModalOpen: newProps.game.lost
                   });
@@ -71,17 +71,20 @@ class Game extends React.Component {
     this.nachat();
   };
 
-  // onEndModalClose() {
-    // window.clearInterval(polkovodets);
-  // }
+  onEndModalClose() {
+    this.setState({startModalOpen: false,
+                   endModalOpen: false});
+    this.props.createNewBlock();
+  }
 
 
   render() {
 
     return (
       <div className="Body">
-        <h1>Tetris on React/Redux!</h1>
-        <h2>{this.props.game.score}</h2>
+        <div className="Title">Tetris on React/Redux!</div>
+        <div className="Score">Current Score:</div>
+        <div className="Score">{this.props.game.score}</div>
         <div>
           <Grid current_block={this.props.game.current_block}
                 blocks={this.props.game.blocks}
@@ -89,22 +92,31 @@ class Game extends React.Component {
                 className="Grid"
           />
         </div>
-        <button onClick={this.nachat}>
-          begin
-        </button>
 
         <Modal
           isOpen={this.state.startModalOpen}
           onRequestClose={this.onStartModalClose}
+          style={modalCSS}
         >
-          Polkovodets Rumyantsev Start
-          <button onClick={this.onStartModalClose}>Close</button>
+        <h1>Welcome to Tetris!</h1>
+        <h2>Built with only React & Redux</h2>
+        <h3>A game by Alexey L. Pajitnov (1984)</h3>
+        <h3>Implemented by Duc (Stian) M. L. Nguyen (2016)</h3>
+        <button onClick={this.onStartModalClose}>START</button>
+        <h2>Controls: Arrow Keys</h2>
+
         </Modal>
 
         <Modal
           isOpen={this.state.endModalOpen}
+          onRequestClose={this.onEndModalClose}
+          style={modalCSS}
         >
-          Polkovodets Rumyantsev End
+          <h1>Thank You for Playing!</h1>
+          <h2>I hope you enjoyed it!</h2>
+          <h3>Your score was: </h3>
+          <h4>{this.props.game.score}</h4>
+          <button onClick={this.onEndModalClose}>New Game</button>
         </Modal>
 
       </div>

@@ -47,9 +47,13 @@ const GridReducer = (oldState = defaultState, action) => {
   newState.current_block = [];
   let current_block_coordinates = oldState.current_block;
   switch(action.type) {
-    // case CREATE_NEW_BLOCK:
-    //   newState.current_block.concat(action.block)
-    //   return newState;
+    case CREATE_NEW_BLOCK:
+      newState.lost = false;
+      newState.score = 0;
+      let randomBlockNum = Math.floor(Math.random()*(7))
+      let newBlock = blocks[randomBlockNum]
+      newState.current_block = newBlock;
+      return newState;
     case ROTATE_BLOCK:
       newState.current_block = rotate(current_block_coordinates);
       return newState;
@@ -64,13 +68,13 @@ const GridReducer = (oldState = defaultState, action) => {
       return newState;
     case RECORD_FALLEN_BLOCK:
       let fallen_block = oldState.current_block;
-      let randomBlockNum = Math.floor(Math.random()*(7))
-      let newBlock = blocks[randomBlockNum]
+      randomBlockNum = Math.floor(Math.random()*(7))
+      newBlock = blocks[randomBlockNum]
       // newState.current_block = ["1404","1304","1204","1104"]
       let all_fallen_blocks = oldState.blocks.concat(fallen_block);
       if (struck_ceiling(all_fallen_blocks)) {
         newState.blocks = [];
-        newState.current_block = newBlock;
+        newState.current_block = [];
         newState.lost = true;
       } else {
         newState.blocks = all_fallen_blocks;
