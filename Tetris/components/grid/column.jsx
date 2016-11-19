@@ -22,7 +22,7 @@ class Column extends React.Component {
   render() {
     let content;
     if (this.state.occupied) {
-      content = (<img className="Block" src="http://res.cloudinary.com/dmuuruew8/image/upload/v1479256839/eba02b302f554f0f8085cc65ab6f2b8f_rswccm.png"/>)
+      content = (<img className="Block" src="https://res.cloudinary.com/dmuuruew8/image/upload/v1479256839/eba02b302f554f0f8085cc65ab6f2b8f_rswccm.png"/>)
     }
     // else {
     //   content = this.state.coordinate

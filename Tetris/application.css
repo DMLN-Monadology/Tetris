@@ -22,13 +22,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overfow: scroll;
 }
 
 .Grid {
   border: 10px solid #9B9EC7;
   margin: 0px;
   padding: 0px;
-  height: 100%;
+  height: auto;
   width: 320px;
   border-radius: 10px;
 }

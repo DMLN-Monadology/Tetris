@@ -1,3 +1,10 @@
+
+resize block to 26x26
+add min-height and width to modal
+moving blocks left will merge blocks
+  > adda  check to left and right shifts 
+
+
 z-shape = [[12,04], [12,05], [13,05], [13,06]];
 z-shape border_left = [[11,01], [11,02], [12,02], [12,03]];
 
