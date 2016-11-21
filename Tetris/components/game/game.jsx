@@ -100,6 +100,7 @@ class Game extends React.Component {
         >
         <h1>Welcome to Tetris!</h1>
         <h2>Built with only React & Redux</h2>
+        <h2>and no other auxiliary tech (like canvas)</h2>
         <h3>A game by Alexey L. Pajitnov (1984)</h3>
         <h3>Implemented by Duc (Stian) M. L. Nguyen (2016)</h3>
         <button onClick={this.onStartModalClose}>START</button>

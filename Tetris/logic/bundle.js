@@ -25405,6 +25405,11 @@
 	            'Built with only React & Redux'
 	          ),
 	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'and no other auxiliary tech (like canvas)'
+	          ),
+	          _react2.default.createElement(
 	            'h3',
 	            null,
 	            'A game by Alexey L. Pajitnov (1984)'
