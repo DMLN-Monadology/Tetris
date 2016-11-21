@@ -36098,6 +36098,8 @@
 	    top: '20%',
 	    left: '20%',
 	    height: '45%',
+	    minHeight: "400px",
+	    minWidth: "475px",
 	    width: '50%',
 	    border: '10px solid yellow',
 	    borderRadius: '10px',
