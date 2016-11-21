@@ -25,7 +25,10 @@ import {moveBlockLeft,
         moveBlockDown
 } from '../logic/moving_block_logic';
 
-import {move_all_blocks_down, struck_ceiling} from '../logic/block_utilities_logic';
+import {move_all_blocks_down,
+        struck_ceiling,
+        struck_other_blocks
+} from '../logic/block_utilities_logic';
 
 const blocks = [
         LINE_PIECE,
@@ -43,7 +46,8 @@ const defaultState = Object.freeze({
 
 const GridReducer = (oldState = defaultState, action) => {
   Object.freeze(oldState);
-  let newState = merge({}, oldState)
+  let newState = merge({}, oldState);
+  let movedBlock = [];
   newState.current_block = [];
   let current_block_coordinates = oldState.current_block;
   switch(action.type) {
@@ -55,13 +59,28 @@ const GridReducer = (oldState = defaultState, action) => {
       newState.current_block = newBlock;
       return newState;
     case ROTATE_BLOCK:
-      newState.current_block = rotate(current_block_coordinates);
+      movedBlock = rotate(current_block_coordinates);
+      if (struck_other_blocks(movedBlock, oldState.blocks)) {
+        newState.current_block = oldState.current_block;
+      }else{
+        newState.current_block = movedBlock;
+      };
       return newState;
     case SHIFT_BLOCK_LEFT:
-      newState.current_block = moveBlockLeft(current_block_coordinates);
+      movedBlock = moveBlockLeft(current_block_coordinates);
+      if (struck_other_blocks(movedBlock, oldState.blocks)) {
+        newState.current_block = oldState.current_block;
+      } else {
+        newState.current_block = movedBlock;
+      };
       return newState;
     case SHIFT_BLOCK_RIGHT:
-      newState.current_block = moveBlockRight(current_block_coordinates);
+      movedBlock = moveBlockRight(current_block_coordinates);
+      if (struck_other_blocks(movedBlock, oldState.blocks)) {
+        newState.current_block = oldState.current_block;
+      } else {
+        newState.current_block = movedBlock;
+      };
       return newState;
     case SHIFT_BLOCK_DOWN:
       newState.current_block = moveBlockDown(current_block_coordinates);

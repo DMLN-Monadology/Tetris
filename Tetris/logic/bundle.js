@@ -35768,7 +35768,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'GridWrapper' },
-	        _react2.default.createElement('img', { className: 'logo', src: "http://res.cloudinary.com/dmuuruew8/image/upload/v1479427172/Screen_Shot_2016-11-17_at_3.23.08_PM_gwgzcu.png" }),
+	        _react2.default.createElement('img', { className: 'logo', src: "https://res.cloudinary.com/dmuuruew8/image/upload/v1479427172/Screen_Shot_2016-11-17_at_3.23.08_PM_gwgzcu.png" }),
 	        _react2.default.createElement(
 	          'ol',
 	          { className: 'Grid' },
@@ -35943,7 +35943,7 @@
 	    value: function render() {
 	      var content = void 0;
 	      if (this.state.occupied) {
-	        content = _react2.default.createElement("img", { className: "Block", src: "http://res.cloudinary.com/dmuuruew8/image/upload/v1479256839/eba02b302f554f0f8085cc65ab6f2b8f_rswccm.png" });
+	        content = _react2.default.createElement("img", { className: "Block", src: "https://res.cloudinary.com/dmuuruew8/image/upload/v1479256839/eba02b302f554f0f8085cc65ab6f2b8f_rswccm.png" });
 	      }
 	      // else {
 	      //   content = this.state.coordinate
@@ -36057,6 +36057,17 @@
 	  var struck = false;
 	  blocks.forEach(function (coordinate) {
 	    if (coordinate.slice(0, 2) === "15") {
+	      struck = true;
+	    };
+	  });
+	
+	  return struck;
+	};
+	
+	var struck_other_blocks = exports.struck_other_blocks = function struck_other_blocks(current_blocks, static_blocks) {
+	  var struck = false;
+	  current_blocks.forEach(function (block) {
+	    if (static_blocks.includes(block)) {
 	      struck = true;
 	    };
 	  });
@@ -36253,6 +36264,7 @@
 	
 	  Object.freeze(oldState);
 	  var newState = (0, _merge2.default)({}, oldState);
+	  var movedBlock = [];
 	  newState.current_block = [];
 	  var current_block_coordinates = oldState.current_block;
 	
@@ -36268,17 +36280,32 @@
 	          v: newState
 	        };
 	      case _block_actions.ROTATE_BLOCK:
-	        newState.current_block = (0, _rotate_block_logic.rotate)(current_block_coordinates);
+	        movedBlock = (0, _rotate_block_logic.rotate)(current_block_coordinates);
+	        if ((0, _block_utilities_logic.struck_other_blocks)(movedBlock, oldState.blocks)) {
+	          newState.current_block = oldState.current_block;
+	        } else {
+	          newState.current_block = movedBlock;
+	        };
 	        return {
 	          v: newState
 	        };
 	      case _block_actions.SHIFT_BLOCK_LEFT:
-	        newState.current_block = (0, _moving_block_logic.moveBlockLeft)(current_block_coordinates);
+	        movedBlock = (0, _moving_block_logic.moveBlockLeft)(current_block_coordinates);
+	        if ((0, _block_utilities_logic.struck_other_blocks)(movedBlock, oldState.blocks)) {
+	          newState.current_block = oldState.current_block;
+	        } else {
+	          newState.current_block = movedBlock;
+	        };
 	        return {
 	          v: newState
 	        };
 	      case _block_actions.SHIFT_BLOCK_RIGHT:
-	        newState.current_block = (0, _moving_block_logic.moveBlockRight)(current_block_coordinates);
+	        movedBlock = (0, _moving_block_logic.moveBlockRight)(current_block_coordinates);
+	        if ((0, _block_utilities_logic.struck_other_blocks)(movedBlock, oldState.blocks)) {
+	          newState.current_block = oldState.current_block;
+	        } else {
+	          newState.current_block = movedBlock;
+	        };
 	        return {
 	          v: newState
 	        };

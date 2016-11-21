@@ -89,5 +89,16 @@ export const struck_ceiling = (blocks) => {
     };
   })
 
+  return struck
+}
+
+export const struck_other_blocks = (current_blocks, static_blocks) => {
+  let struck = false;
+  current_blocks.forEach(block => {
+    if (static_blocks.includes(block)) {
+      struck = true;
+    };
+  })
+
   return struck 
 }

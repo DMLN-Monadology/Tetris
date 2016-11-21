@@ -20,6 +20,8 @@
   right: 0;
   top: 0;
   display: flex;
+  min-height: 850px;
+  min-width: 350px;
   flex-direction: column;
   align-items: center;
   overfow: scroll;
