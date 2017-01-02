@@ -13,7 +13,7 @@ export const modalCSS = {
     left: '20%',
     height: '45%',
     minHeight: "400px",
-    minWidth: "475px",
+    minWidth: "450px",
     width: '50%',
     border: '10px solid yellow',
     borderRadius: '10px',

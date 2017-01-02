@@ -104,7 +104,7 @@ class Game extends React.Component {
         <h3>A game by Alexey L. Pajitnov (1984)</h3>
         <h3>Implemented by Duc (Stian) M. L. Nguyen (2016)</h3>
         <button onClick={this.onStartModalClose}>START</button>
-        <h2>Controls: Arrow Keys</h2>
+        <h2 className="Instructions">Controls: Arrow Keys</h2>
 
         </Modal>
 
